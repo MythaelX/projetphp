@@ -1,4 +1,5 @@
 <?php
+	require_once("PHPClass/bdd.php");
 	require_once("PHPClass/class-Head_Creator.php");
 	
 	$head = new Head_Creator("./");
@@ -10,6 +11,8 @@
 		$head->head_style("design/css/home_made.less");
 		$head->head_style("design/css/style.less");
 	/******************/
+	
+	$head->head_style("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 	
 	$head->head_script("JSClass/_script.js");
 	$head->head_script("JSClass/ajax.js");
@@ -23,6 +26,9 @@
 	/* Scripts personnels */
 		
 	/***************************/
+	
+	$head->head_script("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js");
+	$head->head_script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js");
 	
 	$head->show();
 ?>
