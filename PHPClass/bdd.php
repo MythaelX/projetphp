@@ -24,8 +24,13 @@
 			} else if(isset($type) && strtolower($type) == strtolower($array["mysql"])){
 				$this->dbType = $array["mysql"];
 				
+				$hosts = explode(":", $host);
+				$host = $hosts[0];
+				$port = $hosts[1];
+				
 				try {
-					$this->db = new PDO("mysql:host=" . $host . ";dbname=" . $name . ";charset=UTF8", $user, $pass);
+					$command = "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $name . ";charset=UTF8;";
+					$this->db = new PDO($command, $user, $pass);
 				} catch(PDOException $e){
 					error_log($this->dbType . ' connect error: ' . $e->getMessage());
 					die();

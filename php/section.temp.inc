@@ -1,5 +1,7 @@
 <?php
-	require_once("../PHPClass.php/bdd.php");
+	$rep = $bdd->select("parametre", "*");
 	
-	
+	echo "bouh<pre>";
+	print_r($rep);
+	echo "</pre>";
 ?>
