@@ -36,7 +36,8 @@
 		<header><?php require_once("php/header.temp.inc"); ?></header>
 		<nav class="navbar navbar-default"><?php require_once("php/nav.temp.inc"); ?></nav>
 		<main>
-      <form method="post" action="TP7.php"/>
+      <div class="container" >
+      <form method="post" action="php/database.php"/>
         Label:<br/>
         <input type="text" name="libelle"/>
         <br/>
@@ -59,6 +60,7 @@
         <input type="number" name="interval"/>
         <br/>
         <input type="submit" value="envoyer"/>
+      </div>
     </form>
     </main>
 		<footer><?php require_once("php/footer.temp.inc"); ?></footer>
