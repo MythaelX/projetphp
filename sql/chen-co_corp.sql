@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `chen-co.corp`
+-- Base de données :  `user2`
 --
-CREATE DATABASE IF NOT EXISTS `chen-co.corp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `chen-co.corp`;
+CREATE DATABASE IF NOT EXISTS `user2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `user2`;
 
 -- --------------------------------------------------------
 
