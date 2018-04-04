@@ -35,7 +35,32 @@
 	<body id="body">
 		<header><?php require_once("php/header.temp.inc"); ?></header>
 		<nav class="navbar navbar-default"><?php require_once("php/nav.temp.inc"); ?></nav>
-		<main><?php require_once("php/main.temp.inc"); ?></main>
+		<main>
+      <form method="post" action="TP7.php"/>
+        Label:<br/>
+        <input type="text" name="libelle"/>
+        <br/>
+        Date:<br/>
+        <input type="date" name="date"/>
+        <br/>
+        Corde:<br/>
+        <input type="number" name="corde"/>
+        <br/>
+        tmax %:<br/>
+        <input type="number" name="tmax"/>
+        <br/>
+        fmax %:<br/>
+        <input type="number" name="fmax"/>
+        <br/>
+        nb_points:<br/>
+        <input type="number" name="nb_points"/>
+        <br/>
+        interval entre les points:<br/>
+        <input type="number" name="interval"/>
+        <br/>
+        <input type="submit" value="envoyer"/>
+    </form>
+    </main>
 		<footer><?php require_once("php/footer.temp.inc"); ?></footer>
 	</body>
 </html>
