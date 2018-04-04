@@ -1,0 +1,81 @@
+@import 'home_made/colors';
+@import 'home_made/class';
+
+@import 'home_made/buttons';
+@import 'home_made/alerts';
+@import 'home_made/arrows';
+@import 'home_made/grid';
+
+/* Bases */
+* {
+	margin: 0;
+	padding: 0;
+	
+	position: relative;
+	
+	font-family: Arial;
+}
+
+button {
+	cursor: pointer;
+}
+
+footer {
+	position: relative;
+}
+
+/* Classes */
+
+*[class ~= "little"] {
+	font-size: 60%;
+	font-weight: normal;
+}
+
+*[class ~= "affix"]{
+	position: fixed;
+	top: 0;
+	
+	width: 100%;
+}
+
+*[class ~= "navbar"]{
+	z-index: 666;
+}
+
+*[class ~= "tab"]{
+	display: inline-block;
+	
+	width: 2.5em;
+}
+
+*[class ~= "clickable"]{
+	cursor: pointer;
+}
+
+*[class ~= "clickable"]:hover{
+	border: 1px solid white;
+	transform: translate(-1px, -1px);
+}
+
+*[class ~= "clickable-unborder"]:hover{
+	border-width: 0px;
+	transform: translate(0px, 0px);
+}
+
+*[class ~= "positionnable"]{
+	position: absolute;
+}
+
+*[class ~= "copyright"]{
+	display: inline-block;
+	
+	width: 100%;
+	
+	color: white;
+	background-color: black;
+	
+	font-size: 0.7em;
+	text-align: center;
+	
+	padding: 1.2em 0em;
+}

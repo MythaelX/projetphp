@@ -1,0 +1,50 @@
+@import 'colors';
+
+*[class ~= "arrow"] {
+	border-style: solid;
+    border-color: transparent;
+    
+    display: inline-block;
+}
+
+*[class ~= "arrow-left"] {
+	.transform(rotate(135deg) translate(-50%, 50%));
+}
+
+*[class ~= "arrow-right"] {
+	.transform(rotate(-45deg) translate(50%, -50%));
+}
+
+*[class ~= "arrow-up"] {
+	.transform(rotate(-135deg) translate(50%, 50%));
+}
+
+*[class ~= "arrow-down"] {
+	.transform(rotate(45deg) translate(50%, -50%));
+}
+
+@color-range: 5%;
+
+.arrow-weight(@weight){
+	border-width: @weight;
+}
+
+*[class ~= "arrow-info"] {
+	border-right-color: darken(@color-info, @color-range);
+	border-bottom-color: lighten(@color-info, @color-range);
+}
+
+*[class ~= "arrow-success"] {
+	border-right-color: darken(@color-success, @color-range);
+	border-bottom-color: lighten(@color-success, @color-range);
+}
+
+*[class ~= "arrow-warning"] {
+	border-right-color: darken(@color-warning, @color-range);
+	border-bottom-color: lighten(@color-warning, @color-range);
+}
+
+*[class ~= "arrow-danger"] {
+	border-right-color: darken(@color-error, @color-range);
+	border-bottom-color: lighten(@color-error, @color-range);
+}

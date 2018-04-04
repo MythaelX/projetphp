@@ -1,0 +1,209 @@
+@import 'colors';
+
+*[class ~= "btn"] {
+	display: inline-block;
+	padding: 1em 1.5em;
+	
+	border: 0px groove black;
+	border-radius: 1.2em;
+	
+	width: auto;
+	
+	text-decoration: none;
+}
+
+*[class ~= "btn-lt"] {
+	font-size: 0.6em;
+}
+
+*[class ~= "btn-md"] {
+	font-size: 0.8em;
+}
+
+*[class ~= "btn-lg"] {
+	font-size: 1.3em;
+}
+
+*[class ~= "btn"]:hover, *[class ~= "btn"]:focus {
+	box-shadow: 5px 5px rgba(50, 50, 50, 0.5);
+	cursor: pointer;
+}
+
+*[class ~= "btn"]:active {
+	border-style: ridge;
+}
+
+*[class ~= "btn-success"],
+*[class ~= "btn-info"],
+*[class ~= "btn-error"],
+*[class ~= "btn-warning"],
+*[class ~= "btn-dark"],
+*[class ~= "btn-light"],
+*[class ~= "btn-outline-success"],
+*[class ~= "btn-outline-info"],
+*[class ~= "btn-outline-error"],
+*[class ~= "btn-outline-warning"],
+*[class ~= "btn-outline-dark"],
+*[class ~= "btn-outline-light"] {
+	border-width: 2px;
+}
+
+*[class ~= "btn-success"] {
+	color: @linear-success-text;
+	background-image: @linear-success;
+	border-color: @linear-success-text;
+}
+
+*[class ~= "btn-success"]:active {
+	background-image: @linear-success-invert;
+}
+
+*[class ~= "btn-info"] {
+	color: @linear-info-text;
+	background-image: @linear-info;
+	border-color: @linear-info-text;
+}
+
+*[class ~= "btn-info"]:active {
+	background-image: @linear-info-invert;
+}
+
+*[class ~= "btn-warning"] {
+	color: @linear-warning-text;
+	background-image: @linear-warning;
+	border-color: @linear-warning-text;
+}
+
+*[class ~= "btn-warning"]:active {
+	background-image: @linear-warning-invert;
+}
+
+*[class ~= "btn-error"] {
+	color: @linear-error-text;
+	background-image: @linear-error;
+	border-color: @linear-error-text;
+}
+
+*[class ~= "btn-error"]:active {
+	background-image: @linear-error-invert;
+}
+
+*[class ~= "btn-link"] {
+	color: blue;
+}
+
+*[class ~= "btn-link"]:hover {
+	text-decoration: underline;
+	box-shadow: 0px 0px rgba(50, 50, 50, 0);
+}
+
+*[class ~= "btn-dark"] {
+	color: @linear-dark-text;
+	background-image: @linear-dark;
+	border-color: @linear-dark-text;
+}
+
+*[class ~= "btn-dark"]:active {
+	background-image: @linear-dark-invert;
+}
+
+*[class ~= "btn-light"] {
+	color: @linear-light-text;
+	background-image: @linear-light;
+	border-color: @linear-light-text;
+}
+
+*[class ~= "btn-light"]:active {
+	background-image: @linear-light;
+}
+
+*[class ~= "btn-outline-success"] {
+	color: @linear-success-text;
+	border-color: @linear-success-text;
+}
+
+*[class ~= "btn-outline-success"]:hover {
+	background-image: @linear-success;
+}
+
+*[class ~= "btn-outline-success"]:active {
+	background-image: @linear-success-invert;
+}
+
+*[class ~= "btn-outline-info"] {
+	color: @linear-info-text;
+	border-color: @linear-info-text;
+}
+
+*[class ~= "btn-outline-info"]:hover {
+	background-image: @linear-info;
+}
+
+*[class ~= "btn-outline-info"]:active {
+	background-image: @linear-info-invert;
+}
+
+*[class ~= "btn-outline-warning"] {
+	color: @linear-warning-text;
+	border-color: @linear-warning-text;
+}
+
+*[class ~= "btn-outline-warning"]:hover {
+	background-image: @linear-warning;
+}
+
+*[class ~= "btn-outline-warning"]:active {
+	background-image: @linear-warning-invert;
+}
+
+*[class ~= "btn-outline-error"] {
+	color: @linear-error-text;
+	border-color: @linear-error-text;
+}
+
+*[class ~= "btn-outline-error"]:hover {
+	background-image: @linear-error;
+}
+
+*[class ~= "btn-outline-error"]:active {
+	background-image: @linear-error-invert;
+}
+
+*[class ~= "btn-outline-link"] {
+	color: blue;
+}
+
+*[class ~= "btn-outline-link"]:hover {
+	text-decoration: underline;
+	box-shadow: 0px 0px rgba(50, 50, 50, 0);
+}
+
+*[class ~= "btn-outline-dark"] {
+	color: @linear-dark-text-invert;
+	border-color: @linear-dark-text;
+}
+
+*[class ~= "btn-outline-dark"]:hover {
+	color: @linear-dark-text;
+	background-image: @linear-dark;
+}
+
+*[class ~= "btn-outline-dark"]:active {
+	color: @linear-dark-text;
+	background-image: @linear-dark-invert;
+}
+
+*[class ~= "btn-outline-light"] {
+	color: @linear-light-text-invert;
+	border-color: @linear-light-text;
+}
+
+*[class ~= "btn-outline-light"]:hover {
+	color: @linear-light-text;
+	background-image: @linear-light;
+}
+
+*[class ~= "btn-outline-light"]:active {
+	color: @linear-light-text;
+	background-image: @linear-light;
+}

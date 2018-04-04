@@ -1,0 +1,36 @@
+@import 'colors';
+
+*[class ~= "alert"] {
+	display: inline-block;
+	padding: 1em 1.2em;
+	
+	margin-left: 5%;
+	margin-bottom: 10px;
+	width: 87%;
+	
+	text-align: center;
+	
+	border-radius: 10px;
+	
+	text-decoration: none;
+}
+
+*[class ~= "alert-success"] {
+	color: @linear-success-text;
+	background-image: @linear-success;
+}
+
+*[class ~= "alert-info"] {
+	color: @linear-info-text;
+	background-image: @linear-info;
+}
+
+*[class ~= "alert-warning"] {
+	color: @linear-warning-text;
+	background-image: @linear-warning;
+}
+
+*[class ~= "alert-danger"] {
+	color: @linear-error-text;
+	background-image: @linear-error;
+}
