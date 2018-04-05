@@ -24,7 +24,7 @@
 	/*******************/
 
 	/* Scripts personnels */
-
+		$head->head_script("js/entries.js");
 	/***************************/
 
 	$head->head_script("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js");

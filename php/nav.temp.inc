@@ -9,10 +9,10 @@
 			$page = $urls[sizeOf($urls) - 1];
 			
 			echo "<li";
-			if($page == "index.php"){
+			if($page == "index.php" && !isset($_SESSION["show"]) && !isset($_SESSION["edit"])){
 				echo " class='active'";
 			}
-			echo "><a target=\"_self\" href=\"./\">Accueil</a></li>\n";
+			echo "><a target=\"_self\" href=\"./\" onclick=\"unsetSession();\">Accueil</a></li>\n";
 			
 			echo "\t\t<li";
 			if($page == "new.php"){

@@ -96,6 +96,7 @@
 		public function insert($name, $val){
 			try {
 				$this->db->exec("INSERT INTO $name VALUES(" . $this->secureValues($val) . ")");
+				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' insert request error: ' . $e->getMessage());
 				return false;
@@ -111,6 +112,7 @@
 		
 			try {
 				$this->db->exec("UPDATE $name SET $val");
+				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' update request error: ' . $e->getMessage());
 				return false;
@@ -120,6 +122,7 @@
 		public function delete($name, $where){
 			try {
 				$this->db->exec("DELETE $name WHERE $where");
+				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' delete request error: ' . $e->getMessage());
 				return false;
