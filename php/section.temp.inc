@@ -68,11 +68,16 @@
 			<th scope="row">Nombre de points</th>
 			<td><?php echo $vals["nb_points"]; ?> points</td>
 		</tr>
+		<tr>
+			<th scope="row">Image du graphique</th>
+			<td><a href="<?php echo $vals["fic_img"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
+		</tr>
+		<tr>
+			<th scope="row">Fichier CSV</th>
+			<td><a href="<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
+		</tr>
 	</tbody>
 </table>
-Image du graphique : <a href="<?php echo $vals["fic_img"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a><br />
-Fichier CSV : <a href="<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a>
-</tr>
 		<?php
 	} else if(isset($_SESSION["edit"])){
 		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["edit"]);
