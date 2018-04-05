@@ -1,4 +1,6 @@
 <?php
+	require_once("php/class.php");
+	
 	if(!isset($_SESSION["show"]) && !isset($_SESSION["edit"])){
 		$rep = $bdd->select("parametre", "id, libelle");
 		?>
