@@ -58,11 +58,11 @@
 		</tr>
 		<tr>
 			<th scope="row">Tmax</th>
-			<td><?php echo $vals["tmaxmm"]; ?> mm</td>
+			<td><?php echo $vals["tmaxmm"]; ?> mm (<?php echo $vals["tmax"]; ?>%)</td>
 		</tr>
 		<tr>
 			<th scope="row">Fmax</th>
-			<td><?php echo $vals["fmaxmm"]; ?> mm</td>
+			<td><?php echo $vals["fmaxmm"]; ?> mm (<?php echo $vals["tmax"]; ?>%)</td>
 		</tr>
 		<tr>
 			<th scope="row">Nombre de points</th>

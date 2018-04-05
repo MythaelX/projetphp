@@ -8,7 +8,6 @@
 	$head->head_charset("utf-8");
 
 	/* Styles du site */
-		$head->head_style("design/css/home_made.less");
 		$head->head_style("design/css/style.less");
 	/******************/
 
