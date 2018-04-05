@@ -1,7 +1,7 @@
 <?php
 	$rep = $bdd->select("parametre", "*");
 	
-	echo "bouh<pre>";
+	echo "<pre>";
 	print_r($rep);
 	echo "</pre>";
 ?>
