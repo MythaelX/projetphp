@@ -81,7 +81,11 @@
 		<?php
 	} else if(isset($_SESSION["edit"])){
 		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["edit"]);
+		$rep = $rep[0];
 		?>
-
+<?php require_once("php/paramForm.inc"); ?>
+<script>
+	completeForm(<?php echo $rep["libelle"]; ?>, <?php echo $rep["corde"]; ?>, <?php echo $rep["tmax"]; ?>, <?php echo $rep["fmax"]; ?>, <?php echo $rep["nb_points"]; ?>, <?php echo ""; ?>);
+</script>
 		<?php
 	}
