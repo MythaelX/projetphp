@@ -30,7 +30,12 @@ function completeForm(){
 	if(complete != true){ return; }
 	
 	console.log(libelle + " et " + corde + " et " + tmax + " et " + fmax + " et " + nbpts + " et " + inter);
-	
+	$("#libelle").value = libelle;
+	$("#corde").value = corde;
+	$("#tmax").value = tmax;
+	$("#fmax").value = fmax;
+	$("#nb_points").value = nbpts;
+	$("#interval").value = inter;
 }
 
 completeForm();
