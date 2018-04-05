@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#">Chen-co.corp</a>
+		<a class="navbar-brand" href="./" onclick="unsetSession();">Chen-co.corp</a>
 	</div>
 	<ul class="nav navbar-nav">
 		<?php

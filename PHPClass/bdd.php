@@ -31,6 +31,8 @@
 				try {
 					$command = "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $name . ";charset=UTF8;";
 					$this->db = new PDO($command, $user, $pass);
+					
+					if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
 				} catch(PDOException $e){
 					error_log($this->dbType . ' connect error: ' . $e->getMessage());
 					die();
@@ -55,12 +57,15 @@
 		
 		public function select($name, $selection, $opt=""){
 			try {
-				if(!($this->req = $this->db->query("SELECT $selection FROM $name $opt"))){
+				$command = "SELECT $selection FROM $name $opt";
+				if(!($this->req = $this->db->query($command))){
 					return "";
 				} else {
 					$datas = $this->req->fetchAll(PDO::FETCH_ASSOC);
 					$this->req->closeCursor();
 				}
+				
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
 			
 				if($datas === false){
 					return "";
@@ -75,17 +80,12 @@
 		
 		public function selectJson($name, $selection, $opt=""){
 			try {
-				if(!($this->req = $this->db->query("SELECT $selection FROM $name $opt"))){
-					return "";
+				$data = $this->select($name, $selection, $opt);
+				
+				if($data !== ""){
+					return json_encode($data);
 				} else {
-					$datas = $this->req->fetchAll(PDO::FETCH_ASSOC);
-					$this->req->closeCursor();
-				}
-			
-				if($datas === false){
 					return "";
-				} else {
-					return json_encode($datas);
 				}
 			} catch(PDOException $e){
 				error_log($this->dbType . ' select request error: ' . $e->getMessage());
@@ -95,7 +95,9 @@
 	
 		public function insert($name, $val){
 			try {
-				$this->db->exec("INSERT INTO $name VALUES(" . $this->secureValues($val) . ")");
+				$command = "INSERT INTO $name VALUES(" . $this->secureValues($val) . ")";
+				$this->db->exec($command);
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' insert request error: ' . $e->getMessage());
@@ -111,7 +113,9 @@
 			$val = implode(" = ", $vals);
 		
 			try {
-				$this->db->exec("UPDATE $name SET $val");
+				$command = "UPDATE $name SET $val";
+				$this->db->exec($command);
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' update request error: ' . $e->getMessage());
@@ -121,7 +125,9 @@
 	
 		public function delete($name, $where){
 			try {
-				$this->db->exec("DELETE $name WHERE $where");
+				$command = "DELETE FROM $name WHERE $where";
+				$this->db->exec($command);
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' delete request error: ' . $e->getMessage());

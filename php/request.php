@@ -11,10 +11,12 @@
 		$bdd = new Bdd("mysql", "172.31.4.25:3306", "user2", "user2", "user2");
 	}
 	
-	echo $res;
+	echo $res . "\n";
 	
 	switch($type){
 		case "POST":
+			echo "post id = " . $_POST["id_param"] . "\n";
+			var_dump($_SESSION);
 			unset($_SESSION["show"], $_SESSION["edit"]);
 			switch($res){
 				case "show":
@@ -24,8 +26,11 @@
 					$_SESSION["edit"] = $_POST["id_param"];
 					break;
 				case "delete":
+					echo "deletion cambrure" . "\n";
 					$bdd->delete("cambrure", "id_param=".$_POST["id_param"]);
+					echo "deletion parametre" . "\n";
 					$bdd->delete("parametre", "id=".$_POST["id_param"]);
+					echo "deletion" . "\n";
 					break;
 			}
 			break;
