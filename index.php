@@ -4,7 +4,7 @@
 
 	$head = new Head_Creator("./");
 
-	$head->head_title("Site de test");
+	$head->head_title("Chen-co.corp");
 	$head->head_charset("utf-8");
 
 	/* Styles du site */

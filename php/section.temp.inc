@@ -1,10 +1,8 @@
 <?php
 	if(!isset($_SESSION["show"]) && !isset($_SESSION["edit"])){
+		$rep = $bdd->select("parametre", "id, libelle");
 		?>
-<?php
-	$rep = $bdd->select("parametre", "id, libelle");
-?>
-<table class="table table-bordered table-striped">
+<table class="table table-striped">
 	<caption>Liste des enregistrements</caption>
 	<thead>
 		<tr>
@@ -32,10 +30,52 @@
 </table>
 		<?php
 	} else if(isset($_SESSION["show"])){
+		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["show"]);
+		$rep = $rep[0];
+		
+		$i = 0;
+		
+		foreach($rep as $key => $val){
+			$keys[$i] = $key;
+			$keys[$key] = $key;
+			$vals[$i] = $val;
+			$vals[$key] = $val;
+			$i++;
+		}
 		?>
-
+<table class="table table-striped">
+	<caption>Enregistrement : <?php echo $rep["libelle"]; ?> fait le <?php echo $rep["date"]; ?></caption>
+	<thead>
+		<tr>
+			<th scope="col">Paramètre</th>
+			<th scope="col">Valeur</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Longueur de la corde</th>
+			<td><?php echo $vals["corde"]; ?> mm</td>
+		</tr>
+		<tr>
+			<th scope="row">Tmax</th>
+			<td><?php echo $vals["tmaxmm"]; ?> mm</td>
+		</tr>
+		<tr>
+			<th scope="row">Fmax</th>
+			<td><?php echo $vals["fmaxmm"]; ?> mm</td>
+		</tr>
+		<tr>
+			<th scope="row">Nombre de points</th>
+			<td><?php echo $vals["nb_points"]; ?> points</td>
+		</tr>
+	</tbody>
+</table>
+Image du graphique : <a href="<?php echo $vals["fic_img"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a><br />
+Fichier CSV : <a href="<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a>
+</tr>
 		<?php
 	} else if(isset($_SESSION["edit"])){
+		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["edit"]);
 		?>
 
 		<?php
