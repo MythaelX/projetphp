@@ -85,7 +85,13 @@
 		?>
 <?php require_once("php/paramForm.inc"); ?>
 <script>
-	completeForm(<?php echo $rep["libelle"]; ?>, <?php echo $rep["corde"]; ?>, <?php echo $rep["tmax"]; ?>, <?php echo $rep["fmax"]; ?>, <?php echo $rep["nb_points"]; ?>, <?php echo ""; ?>);
+	var complete = true;
+	var libelle = '<?php echo $rep["libelle"]; ?>';
+	var corde = <?php echo $rep["corde"]; ?>;
+	var tmax = <?php echo $rep["tmax"]; ?>;
+	var fmax = <?php echo $rep["fmax"]; ?>;
+	var nbpts = <?php echo $rep["nb_points"]; ?>;
+	var inter = <?php echo "0"; ?>;
 </script>
 		<?php
 	}

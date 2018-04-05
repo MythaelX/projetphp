@@ -25,3 +25,12 @@ function deleteEntry(id){
 function unsetSession(){
 	ajaxRequest("POST", "./php/request.php/unset", function(){}, "", false);
 }
+
+function completeForm(){
+	if(complete != true){ return; }
+	
+	console.log(libelle + " et " + corde + " et " + tmax + " et " + fmax + " et " + nbpts + " et " + inter);
+	
+}
+
+completeForm();
