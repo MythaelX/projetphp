@@ -4,6 +4,7 @@
 	</div>
 	<ul class="nav navbar-nav">
 		<?php
+			/* Vérification de la page actuelle pour l'attribut active du menu */
 			$page = $_SERVER["PHP_SELF"];
 			$urls = explode("/", $page);
 			$page = $urls[sizeOf($urls) - 1];

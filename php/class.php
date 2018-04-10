@@ -1,4 +1,5 @@
 <?php
+	/* Classe correspondant à la table parametre */
 	class Param {
 		public $libelle;
 		public $corde;
@@ -20,7 +21,8 @@
 			$this->interval=$interval;
 		}
 	}
-
+	
+	/* Classe correspondant à la table cambrure */
 	class Cambrure{
 		public $x;
 		public $t;

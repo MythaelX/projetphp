@@ -4,7 +4,9 @@
 		private $req;
 		private $dbType;
 		
+		/* Constructeur de la classe*/
 		function __construct($type, $host, $name = "", $user = "", $pass = ""){
+			/* Tableau des types de bases de données */
 			$array = array(
 				"mysql" => "MySQL",
 				"sqlite" => "SQLite"
@@ -12,7 +14,9 @@
 			
 			$this->dbType = "";
 			
+			/* Création de PDO selon le type choisit */
 			if(isset($type) && strtolower($type) == strtolower($array["sqlite"])){
+				/* SQLite */
 				$this->dbType = $array["sqlite"];
 				
 				try {
@@ -22,6 +26,7 @@
 					die();
 				}
 			} else if(isset($type) && strtolower($type) == strtolower($array["mysql"])){
+				/* MySQL */
 				$this->dbType = $array["mysql"];
 				
 				$hosts = explode(":", $host);
@@ -38,6 +43,7 @@
 					die();
 				}
 			} else {
+				/* En cas d'erreur, précise les types disponibles */
 				$error_text = "BDD error: You have to choose a bdd type between ";
 				
 				foreach($array as $key => $val){
@@ -51,12 +57,8 @@
 		
 		/* Vérification et protection des données */
 		private function secureValues($val){
-			//if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $val . "<br />\n"; }
-			
 			$val = explode("'", $val);
 			$val = implode("\"", $val);
-			
-			//if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $val . "<br />\n"; }
 		
 			return $val;
 		}
@@ -65,6 +67,7 @@
 		public function select($name, $selection, $opt=""){
 			try {
 				$command = "SELECT $selection FROM $name $opt";
+				
 				if(!($this->req = $this->db->query($command))){
 					return "";
 				} else {
@@ -106,7 +109,9 @@
 			try {
 				$command = "INSERT INTO $name VALUES(" . $this->secureValues($val) . ")";
 				$this->db->exec($command);
+				
 				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+				
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' insert request error: ' . $e->getMessage());
@@ -115,17 +120,33 @@
 		}
 		
 		/* Utilisation de la fonction UPDATE */
-		public function update($name, $val, $opt=""){
-			$vals = explode(" = ", $val);
-				for($i = 1; $i < sizeOf($vals); $i += 2){
-					$vals[$i] = $this->secureValues($vals[$i]);
+		public function update($name, $val, $opts=""){
+			$vals = explode(", ", $val);
+				for($i = 0; $i < sizeOf($vals); ++$i){
+					if(strrpos($vals[$i], " = ") !== false){
+						$valss = explode(" = ", $vals[$i]);
+						
+						$valss[0] = "`" . $valss[0] . "`";
+						$valss[1] = $this->secureValues($valss[1]);
+						
+						$vals[$i] = implode(" = ", $valss);
+					} else {
+						$valss = explode("=", $vals[$i]);
+						
+						$valss[0] = "`" . $valss[0] . "`";
+						$valss[1] = $this->secureValues($valss[1]);
+						
+						$vals[$i] = implode(" = ", $valss);
+					}
 				}
-			$val = implode(" = ", $vals);
+			$val = implode(", ", $vals);
 		
 			try {
 				$command = "UPDATE $name SET $val $opts";
 				$this->db->exec($command);
+				
 				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+				
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' update request error: ' . $e->getMessage());
@@ -138,7 +159,9 @@
 			try {
 				$command = "DELETE FROM $name WHERE $where";
 				$this->db->exec($command);
+				
 				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+				
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' delete request error: ' . $e->getMessage());

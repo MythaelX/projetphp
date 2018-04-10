@@ -1,4 +1,5 @@
-<form method="post" class="container" action="php/database.php">
+<!-- Formulaire commun à la page d'édition et de création -->
+<form method="post" target="_self" class="container" action="php/database.php">
 	<div class="form-group">
 		<label for="libelle">Intitulé :</label><br />
 		<input type="text" class="form-control" name="libelle" id="libelle" />
@@ -27,6 +28,7 @@
 			<input type="number" min=0 step=0.1 class="form-control" name="interval" id="interval" />
 		</div>
 	</div>
+	<!-- Action choisit entre édition et création -->
 	<input type="hidden" name="action" value="<?php
 		$action = "";
 		
@@ -39,6 +41,7 @@
 		echo $action;
 	?>" />
 	<?php
+		/* Ajout d'un champ caché contenant l'id du paramètre en cas d'édition */
 		if(isset($_SESSION["edit"])){
 			?>
 			<input type="hidden" name="id_param" value="<?php echo $_SESSION["edit"]; ?>" />

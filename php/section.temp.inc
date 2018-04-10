@@ -1,7 +1,9 @@
 <?php
 	require_once("php/class.php");
 	
+	/* Affichages selon la page demandée sur la page d'accueil */
 	if(!isset($_SESSION["show"]) && !isset($_SESSION["edit"])){
+		/* Affichage de la liste des entrées dans la table paramètre */
 		$rep = $bdd->select("parametre", "id, libelle");
 		?>
 <table class="table table-striped">
@@ -32,6 +34,7 @@
 </table>
 		<?php
 	} else if(isset($_SESSION["show"])){
+		/* Affichage des informations spécifiques au paramètre demandé */
 		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["show"]);
 		$rep = $rep[0];
 		
@@ -82,6 +85,7 @@
 </table>
 		<?php
 	} else if(isset($_SESSION["edit"])){
+		/* Affichage de la page d'édition du paramètre demandé */
 		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["edit"]);
 		$rep = $rep[0];
 		?>

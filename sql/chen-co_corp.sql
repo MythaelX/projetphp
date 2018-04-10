@@ -30,13 +30,13 @@ USE `user2`;
 
 CREATE TABLE `cambrure` (
   `id` int(11) NOT NULL,
-  `x` int(11) NOT NULL,
-  `t` int(11) NOT NULL,
-  `f` int(11) NOT NULL,
-  `yintra` int(11) NOT NULL,
-  `yextra` int(11) NOT NULL,
+  `x` float NOT NULL,
+  `t` float NOT NULL,
+  `f` float NOT NULL,
+  `yintra` float NOT NULL,
+  `yextra` float NOT NULL,
   `id_param` int(11) NOT NULL,
-  `igz` int(11) NOT NULL
+  `igz` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
