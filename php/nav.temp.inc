@@ -18,7 +18,7 @@
 			if($page == "new.php"){
 				echo " class='active'";
 			}
-			echo "><a target=\"_self\" href=\"new.php\">Nouveau</a></li>\n";
+			echo "><a target=\"_self\" href=\"new.php?action=post\">Nouveau</a></li>\n";
 		?>
 	</ul>
 </div>

@@ -27,5 +27,6 @@
 			<input type="number" min=0 step=0.1 class="form-control" name="interval" id="interval" />
 		</div>
 	</div>
+	<input type="hidden" name="action" value="<?php echo $_GET["action"]; ?>" />
 	<input type="submit" class="btn btn-success" value="Envoyer" />
 </form>
