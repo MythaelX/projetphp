@@ -17,13 +17,14 @@
 	
 	switch($type){
 		case "POST":
-			unset($_SESSION["show"], $_SESSION["edit"]);
+			unset($_SESSION["show"], $_SESSION["edit"], $_SESSION["edit_act"]);
 			switch($res){
 				case "show":
 					$_SESSION["show"] = $_POST["id_param"];
 					break;
 				case "edit":
 					$_SESSION["edit"] = $_POST["id_param"];
+					$_SESSION["edit_act"] = $_POST["action"];
 					break;
 				case "delete":
 					$bdd->delete("cambrure", "id_param=".$_POST["id_param"]);

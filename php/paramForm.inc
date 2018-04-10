@@ -33,15 +33,15 @@
 		if(isset($_GET["action"])){
 			$action = $_GET["action"];	
 		} else {
-			$action = $_POST["action"];
+			$action = $_SESSION["edit_act"];
 		}
 		
 		echo $action;
 	?>" />
 	<?php
-		if(isset($_POST["id_param"])){
+		if(isset($_SESSION["edit"])){
 			?>
-			<input type="hidden" name="id_param" value="<?php echo $_POST["id_param"]; ?>" />
+			<input type="hidden" name="id_param" value="<?php echo $_SESSION["edit"]; ?>" />
 			<?php
 		}
 	?>

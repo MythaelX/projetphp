@@ -24,9 +24,9 @@ if (isset($_POST['libelle'])) {
     }
   }else if($_POST['action']=="update"){
     $bdd->update("parametre","'libelle'=".$parametre->libelle." AND 'corde'=".$parametre->corde." AND 'tmax'=".$parametre->tmax." AND 'tmaxmm'=".$parametre->tmaxmm." AND 'fmax'=".$parametre->fmax."AND 'fmaxmm'=".$parametre->fmaxmm."AND 'nb_points'=".$parametre->nb_points,"WHERE 'id'=".$_POST['id_param']);
+    $bdd->delete("cambrure","'id_param'=".$_POST['id_param']);
 
     for ($i=0; $i <sizeof($points); $i++) {
-      $bdd->delete("cambrure","'id_param'=".$_POST['id_param']);
       $bdd->insert("cambrure","NULL, ".$points[$i]->x.", ".$points[$i]->t.", ".$points[$i]->f.", ".$points[$i]->yintra.", ".$points[$i]->yextra.", ".$_POST['id_param'].", ".$points[$i]->igz);
     }
   }
