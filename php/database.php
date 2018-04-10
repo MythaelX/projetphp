@@ -16,7 +16,7 @@ if($_SERVER["HTTP_HOST"] == "127.0.0.1"){
 if (isset($_POST['libelle'])) {
   $parametre = new Param($_POST['libelle'],$_POST['corde'],$_POST['tmax'],(($_POST['tmax']/100)*$_POST['corde']),$_POST['fmax'],(($_POST['fmax']/100)*$_POST['corde']),$_POST['nb_points'],$_POST['interval']);
   $points = computePoints($parametre);
-  $bdd->insert("parametre", "NULL,".$parametre->libelle.",".$parametre->corde.",".$parametre->tmax.",".$parametre->tmaxmm.",".$parametre->fmax.",".$parametre->fmaxmm.",".$parametre->nb_points.",NOW(),'azerty','azerty'");
+  $bdd->insert("parametre", "NULL, '".$parametre->libelle."', ".$parametre->corde.", ".$parametre->tmax.", ".$parametre->tmaxmm.", ".$parametre->fmax.", ".$parametre->fmaxmm.", ".$parametre->nb_points.", NOW(), 'azerty', 'azerty'");
 }
 
   ?>

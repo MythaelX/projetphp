@@ -32,7 +32,7 @@
 					$command = "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $name . ";charset=UTF8;";
 					$this->db = new PDO($command, $user, $pass);
 					
-					if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
+					if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 				} catch(PDOException $e){
 					error_log($this->dbType . ' connect error: ' . $e->getMessage());
 					die();
@@ -50,7 +50,12 @@
 		}
 	
 		private function secureValues($val){
-			$val = $this->db->quote($val);
+			//if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $val . "<br />\n"; }
+			
+			$val = explode("'", $val);
+			$val = implode("\"", $val);
+			
+			//if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $val . "<br />\n"; }
 		
 			return $val;
 		}
@@ -65,7 +70,7 @@
 					$this->req->closeCursor();
 				}
 				
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 			
 				if($datas === false){
 					return "";
@@ -97,7 +102,7 @@
 			try {
 				$command = "INSERT INTO $name VALUES(" . $this->secureValues($val) . ")";
 				$this->db->exec($command);
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' insert request error: ' . $e->getMessage());
@@ -115,7 +120,7 @@
 			try {
 				$command = "UPDATE $name SET $val";
 				$this->db->exec($command);
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' update request error: ' . $e->getMessage());
@@ -127,7 +132,7 @@
 			try {
 				$command = "DELETE FROM $name WHERE $where";
 				$this->db->exec($command);
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' delete request error: ' . $e->getMessage());
