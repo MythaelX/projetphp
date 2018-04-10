@@ -5,14 +5,14 @@
 		$i = 0;
 		$tprec = 0;
 		
-		/*echo "Nb points = " . $param->nb_points . "<br />\n";
+		echo "Nb points = " . $param->nb_points . "<br />\n";
 		echo "Interval = " . $param->interval . "<br />\n";
-		echo "<hr />\n";*/
+		echo "<hr />\n";
 		
 		for($index = 0; $index < intval($param->nb_points); ++$index){
-			/*echo "Index = " . $index . "<br />\n";
+			echo "Index = " . $index . "<br />\n";
 			echo "Interval = " . $param->interval . "<br />\n";
-			echo "i = " . $i . "<br />\n";*/
+			echo "i = " . $i . "<br />\n";
 			
 			$t = -1 * (1.015 * pow(($i/$param->corde), 4) - 2.843 * pow(($i/$param->corde), 3) + 3.516 * pow(($i/$param->corde), 2) + 1.26 * ($i/$param->corde) - 2.969 * sqrt($i/$param->corde)) * $param->tmaxmm;
 			$f = -4 * (pow(($i/$param->corde), 2) - ($i/$param->corde)) * $param->fmaxmm;
@@ -25,14 +25,14 @@
 			
 			$points[$index] = new Cambrure($i, $t, $f, $yintra, $yextra, $igz);
 			
-			$i = $i + intval($param->interval);
+			$i += $param->interval;
 			$tprec = $t;
 		}
-		/*echo "<hr />\n";
+		echo "<hr />\n";
 		
 		echo "<pre>";
 		print_r($points);
-		echo "</pre>";*/
+		echo "</pre>";
 		
 		return $points;
 	}
