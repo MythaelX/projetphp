@@ -1,27 +1,41 @@
+<?php
+require_once ('../jpgraph/jpgraph.php');
+require_once ('../jpgraph/jpgraph_bar.php');
 
-<?php // content="text/plain; charset=utf-8"
-require_once ('./jpgraph/jpgraph.php');
-require_once ('./jpgraph/jpgraph_pie.php');
-// Some data
-$data = array(40,21,17,14,23);
+$data1 = array(-8,8,9,3,5,6);
+$data2 = array(18,2,1,7,5,4);
+$data3 = array(18,2,1,7,5,4);
 
-// Create the Pie Graph.
-$graph = new PieGraph(350,250);
+// Create the graph. These two calls are always required
+$graph = new Graph(500, 400);
+$graph->cleartheme();
+$graph->SetScale("textlin");
 
-$theme_class="DefaultTheme";
-//$graph->SetTheme(new $theme_class());
+$graph->SetShadow();
+$graph->img->SetMargin(40, 30, 20, 40);
 
-// Set A title for the plot
-$graph->title->Set("A Simple Pie Plot");
-$graph->SetBox(true);
+// Create the bar plots
+$b1plot = new BarPlot($data1);
+$b1plot->SetFillColor("orange");
+$b1plot->value->Show();
+$b2plot = new BarPlot($data2);
+$b2plot->SetFillColor("blue");
+$b2plot->value->Show();
 
-// Create
-$p1 = new PiePlot($data);
-$graph->Add($p1);
+// Create the grouped bar plot
+$gbplot = new AccBarPlot(array($b1plot,$b2plot));
 
-$p1->ShowBorder();
-$p1->SetColor('black');
-$p1->SetSliceColors(array('#1E90FF','#2E8B57','#ADFF2F','#DC143C','#BA55D3'));
+// ...and add it to the graPH
+$graph->Add($gbplot);
+
+$graph->title->Set("Accumulated bar plots");
+$graph->xaxis->title->Set("X-title");
+$graph->yaxis->title->Set("Y-title");
+
+$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+
+// Display the graph
 $graph->Stroke();
-
 ?>
