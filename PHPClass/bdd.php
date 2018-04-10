@@ -48,7 +48,8 @@
 				die();
 			}
 		}
-	
+		
+		/* Vérification et protection des données */
 		private function secureValues($val){
 			//if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $val . "<br />\n"; }
 			
@@ -60,6 +61,7 @@
 			return $val;
 		}
 		
+		/* Utilisation de la fonction SELECT */
 		public function select($name, $selection, $opt=""){
 			try {
 				$command = "SELECT $selection FROM $name $opt";
@@ -83,6 +85,7 @@
 			}
 		}
 		
+		/* Utilisation de la fonction SELECT et conversion de la réponse JSON */
 		public function selectJson($name, $selection, $opt=""){
 			try {
 				$data = $this->select($name, $selection, $opt);
@@ -97,7 +100,8 @@
 				return false;
 			}
 		}
-	
+		
+		/* Utilisation de la fonction INSERT */
 		public function insert($name, $val){
 			try {
 				$command = "INSERT INTO $name VALUES(" . $this->secureValues($val) . ")";
@@ -109,8 +113,9 @@
 				return false;
 			}
 		}
-	
-		public function update($name, $val){
+		
+		/* Utilisation de la fonction UPDATE */
+		public function update($name, $val, $opt=""){
 			$vals = explode(" = ", $val);
 				for($i = 1; $i < sizeOf($vals); $i += 2){
 					$vals[$i] = $this->secureValues($vals[$i]);
@@ -118,7 +123,7 @@
 			$val = implode(" = ", $vals);
 		
 			try {
-				$command = "UPDATE $name SET $val";
+				$command = "UPDATE $name SET $val $opts";
 				$this->db->exec($command);
 				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 				return true;
@@ -127,7 +132,8 @@
 				return false;
 			}
 		}
-	
+		
+		/* Utilisation de la fonction DELETE */
 		public function delete($name, $where){
 			try {
 				$command = "DELETE FROM $name WHERE $where";
@@ -136,6 +142,16 @@
 				return true;
 			} catch(PDOException $e){
 				error_log($this->dbType . ' delete request error: ' . $e->getMessage());
+				return false;
+			}
+		}
+		
+		/* Récupération du dernier identifiant générer */
+		public function getId(){
+			try {
+				return $this->db->lastInsertId();
+			} catch(PDOException $e){
+				error_log($this->dbType . ' getId request error: ' . $e->getMessage());
 				return false;
 			}
 		}
