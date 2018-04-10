@@ -36,5 +36,8 @@
 		<nav class="navbar navbar-default"><?php require_once("php/nav.temp.inc"); ?></nav>
 		<main class="container"><?php require_once("php/main.temp.inc"); ?></main>
 		<footer><?php require_once("php/footer.temp.inc"); ?></footer>
+		<?php
+			echo "<img src='./php/graph.php' />";
+		?>
 	</body>
 </html>
