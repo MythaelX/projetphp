@@ -27,15 +27,15 @@
 		public $f;
 		public $yintra;
 		public $yextra;
-		public $igx;
-		
-		function __construct($x,$t,$f,$yintra,$yextra,$igx){
+		public $igz;
+
+		function __construct($x,$t,$f,$yintra,$yextra,$igz){
 			$this->x=$x;
 			$this->t=$t;
 			$this->f=$f;
 			$this->yintra=$yintra;
 			$this->yextra=$yextra;
-			$this->igx=$igx;
+			$this->igz=$igz;
 		}
 	}
 ?>
