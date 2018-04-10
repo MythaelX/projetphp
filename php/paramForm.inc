@@ -27,6 +27,23 @@
 			<input type="number" min=0 step=0.1 class="form-control" name="interval" id="interval" />
 		</div>
 	</div>
-	<input type="hidden" name="action" value="<?php echo $_GET["action"]; ?>" />
+	<input type="hidden" name="action" value="<?php
+		$action = "";
+		
+		if(isset($_GET["action"])){
+			$action = $_GET["action"];	
+		} else {
+			$action = $_POST["action"];
+		}
+		
+		echo $action;
+	?>" />
+	<?php
+		if(isset($_POST["id_param"])){
+			?>
+			<input type="hidden" name="id_param" value="<?php echo $_POST["id_param"]; ?>" />
+			<?php
+		}
+	?>
 	<input type="submit" class="btn btn-success" value="Envoyer" />
 </form>

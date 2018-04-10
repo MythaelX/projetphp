@@ -9,7 +9,7 @@ function showEntry(id){
 function editEntry(id){
 	ajaxRequest("POST", "./php/request.php/edit", function(val){
 		console.log(val);
-	}, "id_param="+id, false);
+	}, "id_param="+id+"&action=update", false);
 	
 	location.reload();
 }
