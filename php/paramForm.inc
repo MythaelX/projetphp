@@ -23,10 +23,6 @@
 			<label for="nb_points">Nombre de points pour les calculs :</label><br />
 			<input type="number" min=0 step=1 class="form-control" name="nb_points" id="nb_points" />
 		</div>
-		<div class="form-group" style="display: inline-block; width: 45%;">
-			<label for="interval">Interval entre les points:</label><br />
-			<input type="number" min=0 step=0.1 class="form-control" name="interval" id="interval" />
-		</div>
 	</div>
 	<!-- Action choisit entre édition et création -->
 	<input type="hidden" name="action" value="<?php

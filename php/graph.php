@@ -1,41 +1,70 @@
 <?php
-require_once ('../jpgraph/jpgraph.php');
-require_once ('../jpgraph/jpgraph_bar.php');
+function createGraph($id){
+	require_once('../jpgraph/jpgraph.php');
+	require_once('../jpgraph/jpgraph_line.php');
 
-$data1 = array(-8,8,9,3,5,6);
-$data2 = array(18,2,1,7,5,4);
-$data3 = array(18,2,1,7,5,4);
+	require_once("../PHPClass/bdd.php");
+	require("dbConnect.inc");
+	
+	$datasP = $bdd->select("parametre", "*", "WHERE id=".$id);
+	$datas = $bdd->select("cambrure", "*", "WHERE id_param=".$id);
 
-// Create the graph. These two calls are always required
-$graph = new Graph(500, 400);
-$graph->cleartheme();
-$graph->SetScale("textlin");
+	for($i = 0; $i < sizeOf($datas); ++$i){
+		$yi[$i] = floatval($datas[$i]["yintra"]);
+		$ye[$i] = floatval($datas[$i]["yextra"]);
+		$y[$i] = (floatval($datas[$i]["yintra"]) + floatval($datas[$i]["yextra"])) / 2;
+	}
+	for($i = 0; $i < sizeOf($datas); $i += 10){
+		$x[$i] = floatval($datas[$i]["x"]);
+	}
 
-$graph->SetShadow();
-$graph->img->SetMargin(40, 30, 20, 40);
+	$data1 = $yi;
+	$data2 = $ye;
+	$data3 = $y;
+	
+	// Create the filename
+	$imgfile = $datasP[0]["libelle"] . "_" . uniqid("", true) . ".jpg";
 
-// Create the bar plots
-$b1plot = new BarPlot($data1);
-$b1plot->SetFillColor("orange");
-$b1plot->value->Show();
-$b2plot = new BarPlot($data2);
-$b2plot->SetFillColor("blue");
-$b2plot->value->Show();
+	// Create the graph. These two calls are always required
+	$graph = new Graph(1200, 780);
+	$graph->cleartheme();
+	$graph->SetScale("textlin");
 
-// Create the grouped bar plot
-$gbplot = new AccBarPlot(array($b1plot,$b2plot));
+	$graph->SetShadow();
+	$graph->img->SetMargin(40, 30, 20, 40);
 
-// ...and add it to the graPH
-$graph->Add($gbplot);
+	// Create the lines
+	$c1 = new LinePlot($data1);
+	//$c1->SetLineColor("red");
+	$c2 = new LinePlot($data2);
+	//$c2->SetLineColor("blue");
+	$c3 = new LinePlot($data3);
+	//$c3->SetLineColor("yellow");
 
-$graph->title->Set("Accumulated bar plots");
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+	// ...and add it to the graph
+	$graph->add($c1);
+	$graph->add($c2);
+	$graph->add($c3);
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+	//Set the graph title
+	$graph->title->Set($datasP[0]["libelle"]);
+	$graph->title->SetFont(FF_FONT1, FS_BOLD);
+	
+	//Set x-axis properties
+	$graph->xaxis->title->Set("X");
+	$graph->xaxis->SetTickLabels($x);
+	$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 
-// Display the graph
-$graph->Stroke();
+	//Set y-axis properties
+	$graph->yaxis->title->Set("Y");
+	$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
+	
+	// Set the img format
+	$graph->SetImgFormat("jpeg", 90);
+
+	// Save the graph
+	$graph->Stroke("../design/img/" . $imgfile);
+	
+	return $imgfile;
+}
 ?>

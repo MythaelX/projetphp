@@ -75,11 +75,11 @@
 		</tr>
 		<tr>
 			<th scope="row">Image du graphique</th>
-			<td><a href="<?php echo $vals["fic_img"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
+			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>"><img src="./design/img/<?php echo $vals["fic_img"]; ?>" /></a></td>
 		</tr>
 		<tr>
 			<th scope="row">Fichier CSV</th>
-			<td><a href="<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
+			<td><a href="./files/<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
 		</tr>
 	</tbody>
 </table>
