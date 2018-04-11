@@ -35,6 +35,6 @@
 		<header><?php require_once("php/header.temp.inc"); ?></header>
 		<nav class="navbar navbar-default"><?php require_once("php/nav.temp.inc"); ?></nav>
 		<main class="container"><?php require_once("php/main.temp.inc"); ?></main>
-		<footer><?php require_once("php/footer.temp.inc"); ?></footer>
+		<footer class="container-fluid"><?php require_once("php/footer.temp.inc"); ?></footer>
 	</body>
 </html>
