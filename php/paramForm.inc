@@ -27,13 +27,13 @@
 	<!-- Action choisit entre édition et création -->
 	<input type="hidden" name="action" value="<?php
 		$action = "";
-		
+
 		if(isset($_GET["action"])){
-			$action = $_GET["action"];	
+			$action = $_GET["action"];
 		} else {
 			$action = $_SESSION["edit_act"];
 		}
-		
+
 		echo $action;
 	?>" />
 	<?php
