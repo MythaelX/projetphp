@@ -1,18 +1,18 @@
 <?php
 	require_once("php/class.php");
-	
+
 	/* Affichages selon la page demandée sur la page d'accueil */
 	if(!isset($_SESSION["show"]) && !isset($_SESSION["edit"])){
 		/* Affichage de la liste des entrées dans la table paramètre */
 		$rep = $bdd->select("parametre", "id, libelle");
 		?>
-<table class="table table-striped">
-	<caption>Liste des enregistrements</caption>
+<table class="table table-striped table-bordered ">
+	<h1>Liste des enregistrements</h1>
 	<thead>
 		<tr>
-			<th scope="col">#</th>
+			<th scope="col">ID</th>
 			<th scope="col">Nom de l'enregistrement</th>
-			<th scope="col">Actions</th>
+			<th scope="col">Voir / Modifier / Supprimer</th>
 		</tr>
 	</thead>
 	<tbody><?php $i = 1;
@@ -22,7 +22,7 @@
 			<td><?php echo $array["libelle"]; ?></td>
 			<td>
 				<div class="btn-group" role="group" aria-label="Bouttons d'actions">
-					<button type="button" class="btn btn-primary" onclick="showEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-search"></i></button>
+					<button type="button" class="btn btn-primary" onclick="showEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-eye-open"></i></button>
 					<button type="button" class="btn btn-primary" onclick="editEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-pencil"></i></button>
 					<button type="button" class="btn btn-primary" onclick="deleteEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-trash"></i></button>
 				</div>
@@ -37,9 +37,9 @@
 		/* Affichage des informations spécifiques au paramètre demandé */
 		$rep = $bdd->select("parametre", "*", "WHERE id=".$_SESSION["show"]);
 		$rep = $rep[0];
-		
+
 		$i = 0;
-		
+
 		foreach($rep as $key => $val){
 			$keys[$i] = $key;
 			$keys[$key] = $key;
@@ -79,7 +79,7 @@
 		</tr>
 		<tr>
 			<th scope="row">Fichier CSV</th>
-			<td><a href="./files/<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
+			<td><a href="./csv/<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
 		</tr>
 	</tbody>
 </table>
