@@ -23,7 +23,7 @@
 			<td><?php echo $array["libelle"]; ?></td>
 			<td>
 				<div class="btn-group" role="group" aria-label="Bouttons d'actions">
-					<button type="button" class="btn btn-primary" onclick="showEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-eye-open"></i></button>
+					<button type="button" class="btn btn-primary" onclick="showEntry(<?php echo $array["id"]; ?>);"><svg-icon><src href="./design/icons/si-glyph-pencil.svg"/></svg-icon></button>
 					<button type="button" class="btn btn-primary" onclick="editEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-pencil"></i></button>
 					<button type="button" class="btn btn-primary" onclick="deleteEntry(<?php echo $array["id"]; ?>);"><i class="glyphicon glyphicon-trash"></i></button>
 				</div>

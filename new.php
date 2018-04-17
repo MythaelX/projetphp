@@ -35,10 +35,8 @@
 ?>
 	<body id="body">
 		<header><?php require_once("php/header.temp.inc"); ?></header>
-		<nav class="navbar navbar-default"><?php require_once("php/nav.temp.inc"); ?></nav>
-		<main>
-			<?php require_once("php/paramForm.inc"); ?>
-		</main>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><?php require_once("php/nav.temp.inc"); ?></nav>
+		<main><?php require_once("php/paramForm.inc"); ?></main>
 		<footer><?php require_once("php/footer.temp.inc"); ?></footer>
 	</body>
 </html>
