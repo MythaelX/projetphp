@@ -2,6 +2,7 @@
 function createCSV($id){
 	require_once("../PHPClass/bdd.php");
 	require("dbConnect.inc");
+	require_once("../PHPClass/_functions.php");
 	$datasP = $bdd->select("parametre", "libelle, corde, tmax, tmaxmm, fmax, fmaxmm", "WHERE id=".$id);
 	$datas = $bdd->select("cambrure", "x, t, f, yintra, yextra, igz", "WHERE id_param=".$id);
 
@@ -35,9 +36,11 @@ function createCSV($id){
 		$data_csv[1][$i + $index] = $val;
 		$index++;
 	}
-
+	
+	$data_csv = replace_all(".", ",", $data_csv);
+	
 	foreach ($data_csv as $fields) {
-		fputcsv($fp, $fields);
+		fputcsv($fp, $fields, ";");
 	}
 
 	fclose($fp);
