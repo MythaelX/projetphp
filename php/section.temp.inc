@@ -22,9 +22,9 @@
 			<td><?php echo $array["libelle"]; ?></td>
 			<td>
 				<div class="btn-group" role="group" aria-label="Bouttons d'actions">
-					<button type="button" class="btn btn-primary" onclick="showEntry(<?php echo $array["id"]; ?>);"><img src="./design/icons/si-glyph-eye.svg" height="25px" width="auto"></button>
+					<button type="button" class="btn btn-primary" onclick="showEntry(<?php echo $array["id"]; ?>);"><img src="./design/icons/si-glyph-document-search.svg" height="25px" width="auto"></button>
 					<button type="button" class="btn btn-primary" onclick="editEntry(<?php echo $array["id"]; ?>);"><img src="./design/icons/si-glyph-pencil.svg" height="25px" width="auto"></button>
-					<button type="button" class="btn btn-primary" onclick="deleteEntry(<?php echo $array["id"]; ?>);"><img src="./design/icons/si-glyph-pencil.svg" height="25px" width="auto"></button>
+					<button type="button" class="btn btn-primary" onclick="deleteEntry(<?php echo $array["id"]; ?>);"><img src="./design/icons/si-glyph-trash.svg" height="25px" width="auto"></button>
 				</div>
 			</td>
 		</tr>
@@ -75,11 +75,11 @@
 		</tr>
 		<tr>
 			<th scope="row">Image du graphique</th>
-			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>"><img src="./design/img/<?php echo $vals["fic_img"]; ?>" /></a></td>
+			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>" /></a></td>
 		</tr>
 		<tr>
 			<th scope="row">Fichier CSV</th>
-			<td><a href="./csv/<?php echo $vals["fic_csv"]; ?>"><i class="glyphicon glyphicon-download-alt"></i></a></td>
+			<td><a href="./csv/<?php echo $vals["fic_csv"]; ?>"><img src="./design/icons/si-glyph-file-download.svg" height="25px" width="auto"></a></td>
 		</tr>
 	</tbody>
 </table>
