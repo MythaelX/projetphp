@@ -44,7 +44,6 @@
 							 	$points[$i]->yextra . ", " .
 							 	$id . ", " . $points[$i]->igz);
 			}
-			error_log("ok");
 			$imgfile = createGraph($id);
 			$csvfile = createCSV($id);
 
@@ -90,5 +89,5 @@
 	}
 
 	/* Retour à la page d'accueil */
-	//header('Location: ../');
+	header('Location: ../');
 ?>
