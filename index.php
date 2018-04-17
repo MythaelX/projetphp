@@ -11,7 +11,7 @@
 		$head->head_style("design/css/style.less");
 	/******************/
 
-	$head->head_style("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+	$head->head_style("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css");
 
 	$head->head_script("JSClass/_script.js");
 	$head->head_script("JSClass/ajax.js");
@@ -27,13 +27,14 @@
 	/***************************/
 
 	$head->head_script("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js");
-	$head->head_script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js");
-
+	$head->head_script("https://code.jquery.com/jquery-3.3.1.slim.min.js");
+	$head->head_script("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js");
+	$head->head_script("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js");
 	$head->show();
 ?>
 	<body id="body">
 		<header><?php require_once("php/header.temp.inc"); ?></header>
-		<nav class="navbar navbar-default"><?php require_once("php/nav.temp.inc"); ?></nav>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><?php require_once("php/nav.temp.inc"); ?></nav>
 		<main class="container"><?php require_once("php/main.temp.inc"); ?></main>
 		<footer class="container-fluid"><?php require_once("php/footer.temp.inc"); ?></footer>
 	</body>
