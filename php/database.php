@@ -5,7 +5,7 @@
 	require_once("dbConnect.inc");
 	require_once("csv.php");
 
-	//$DEBUG = true;;
+	//$DEBUG = true;
 	/* Traitement des données si la variable $_POST["libelle"], donc si des données ont été envoyées */
 	if (isset($_POST['libelle'])) {
 		/* Création d'un objet de classe Param */
@@ -90,5 +90,5 @@
 	}
 
 	/* Retour à la page d'accueil */
-	header('Location: ../');
+	//header('Location: ../');
 ?>
