@@ -6,7 +6,6 @@
 		/* Affichage de la liste des entrées dans la table paramètre */
 		$rep = $bdd->select("parametre", "id, libelle");
 		?>
-	</br></br>
 		<h1>Liste des enregistrements</h1>
 <table class="table table-striped table-dark table-bordered">
 	<thead class="thead-light">

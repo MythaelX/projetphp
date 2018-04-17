@@ -1,5 +1,4 @@
 <!-- Formulaire commun à la page d'édition et de création -->
-</br></br></br></br></br></br>
 <h1>Formulaire</h1>
 <form method="post" target="_self" class="container" action="php/database.php">
 	<div class="form-group">
