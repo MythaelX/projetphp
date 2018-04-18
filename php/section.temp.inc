@@ -48,7 +48,8 @@
 			$i++;
 		}
 		?>
-<table class="table table-striped">
+<h1>Informations sur le paramètre</h1>
+<table class="table table-striped table-dark table-bordered">
 	<caption>Enregistrement : <?php echo $rep["libelle"]; ?> fait le <?php echo $rep["date"]; ?></caption>
 	<thead>
 		<tr>

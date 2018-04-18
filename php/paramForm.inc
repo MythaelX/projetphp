@@ -1,6 +1,7 @@
 <!-- Formulaire commun à la page d'édition et de création -->
+<div class="bg-dark text-white container">
 <h1>Formulaire</h1>
-<form method="post" target="_self" class="container" action="php/database.php">
+<form method="post" target="_self" class="container " action="php/database.php">
 	<div class="form-group">
 		<label for="libelle">Intitulé :</label><br />
 		<input type="text" class="form-control" name="libelle" id="libelle" />
@@ -47,3 +48,4 @@
 	?>
 	<input type="submit" class="btn btn-success" value="Envoyer" />
 </form>
+</div>
