@@ -1,3 +1,13 @@
+/************************************************************************************/
+/*																					*/
+/*					File : ajax.js													*/
+/*						Created by Mathias CABIOCH-DELALANDE						*/
+/*							Last modification : 21/04/2018							*/
+/*																					*/
+/*						Authorization : use only									*/
+/*																					*/
+/************************************************************************************/
+
 'use strict';
 
 var errorDiv = document.getElementById("errors");
