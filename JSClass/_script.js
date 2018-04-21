@@ -189,3 +189,38 @@ function getOffsetTop(e){
 function scrollToEnd(el){
 	el.scrollTop = el.scrollHeight;
 }
+
+function createStruct(fields) {
+	var fields = fields.split(' ');
+	var nbFields = fields.length;
+	
+	function constructor() {
+		for (var i = 0; i < nbFields; ++i) {
+			this[fields[i]] = arguments[i];
+		}
+	}
+	
+	return constructor;
+}
+
+/* Functions that will be launched at the window onload event */
+var onloadFunctions = new Array;
+var onloadLine = createStruct("f args");
+
+function addOnload(funct){
+	var args = new Array;
+	for(var i = 1; i < arguments.length; ++i){
+		args.push(arguments[i]);
+	}
+	
+	var line = new onloadLine(funct, args);
+	var length = onloadFunctions.length;
+	
+	onloadFunctions.push(line);
+}
+
+window.onload = function(){
+	for(var i = 0; i < onloadFunctions.length; ++i){
+		onloadFunctions[i].f.apply(null, onloadFunctions[i].args);
+	}
+}

@@ -23,6 +23,7 @@
 	/*******************/
 
 	/* Scripts personnels */
+		$head->head_script("js/script.js");
 		$head->head_script("js/entries.js");
 	/***************************/
 
