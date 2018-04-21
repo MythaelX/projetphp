@@ -37,7 +37,7 @@
 		
 		/* Return the head code */
 		public function get(){
-			return $this->head;
+			return $this->_head;
 		}
 		
 		/* Recovery of the saved path */
