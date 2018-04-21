@@ -13,6 +13,7 @@
 var errorDiv = document.getElementById("errors");
 var divErrorsClass = "container";
 
+/* Initialize the error div */
 function httpErrors(errorNumber, errorText){
 	var out = "<b>Error</b> : ";
 	
@@ -21,6 +22,9 @@ function httpErrors(errorNumber, errorText){
 		document.getElementsByTagName("body")[0].insertAdjacentElement("afterbegin", errorDiv);
 	}
 	errorDiv.style.display = "inline-block";
+	
+	errorDiv.style.position = "fixed";
+	errorDiv.style.top = "0";
 	
 	out += errorNumber + " - " + errorText;
 	switch(errorNumber){
@@ -49,6 +53,7 @@ function httpErrors(errorNumber, errorText){
 	errorDiv.innerHTML = out;
 }
 
+/* On success, hide the error div */
 function httpSuccess(){
 	if(!errorDiv){
 		errorDiv = document.createElement("div");
@@ -57,6 +62,7 @@ function httpSuccess(){
 	errorDiv.style.display = "none";
 }
 
+/* The function that start an ajax request */
 function ajaxRequest(type, request, callback, data = null, async = true){
 	if((type == "POST" || type == "PUT") && data == null){
 		console.log("Please put datas to be sended with this protocol");
@@ -67,29 +73,36 @@ function ajaxRequest(type, request, callback, data = null, async = true){
 	var auth = 0;
 	xhr = new XMLHttpRequest();
 	
-	if(type == "AUTH"){
-		type = "GET";
-		auth = 1;
-	}
-	
-	if((type == "GET" || type == "DELETE") && data != null){
-		if(!auth){
-			request += "?" + data;
+	/* On AUTH */
+		if(type == "AUTH"){
+			type = "GET";
+			auth = 1;
 		}
-	}
+	/***********/
+	
+	/* If it's GET or DELETE  and if there are datas and it's no an AUTH */
+		if((type == "GET" || type == "DELETE") && data != null){
+			if(!auth){
+				request += "?" + data;
+			}
+		}
+	/*************************/
 	
 	xhr.open(type, request, async);
 	xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('token'));
 	
+	/* Add a header for a POST or PUT */
 	if(type == "POST" || type == "PUT"){
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	}
+	/* Add another header for an AUTH */
 	if(auth){
 		if(Cookies.get('token')){} else {
 			xhr.setRequestHeader('Authorization', 'Basic ' + btoa(data));
 		}
 	}
 	
+	/* Set the onload function */
 	xhr.onload = function(){
 		switch(xhr.status){
 			case 200:
@@ -102,6 +115,7 @@ function ajaxRequest(type, request, callback, data = null, async = true){
 		}
 	};
 	
+	/* Send what is needed according to the protocol */
 	if(type == "GET" || type == "DELETE"){
 		xhr.send(null);
 	} else if(type == "POST" || type == "PUT"){

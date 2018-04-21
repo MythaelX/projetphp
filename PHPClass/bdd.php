@@ -1,12 +1,23 @@
 <?php
+
+/****************************************************************/
+/*																*/
+/*			File : bdd.php										*/
+/*				Created by Mathias CABIOCH-DELALANDE			*/
+/*					Last modification : 21/04/2018				*/
+/*																*/
+/*				Authorization : use only						*/
+/*																*/
+/****************************************************************/
+
 	class Bdd{
 		public $db;
 		private $req;
 		private $dbType;
 		
-		/* Constructeur de la classe*/
+		/* Class constructor */
 		function __construct($type, $host, $name = "", $user = "", $pass = ""){
-			/* Tableau des types de bases de données */
+			/* Database types array */
 			$array = array(
 				"mysql" => "MySQL",
 				"sqlite" => "SQLite"
@@ -14,7 +25,7 @@
 			
 			$this->dbType = "";
 			
-			/* Création de PDO selon le type choisit */
+			/* Create a PDO Object according to the choosen type */
 			if(isset($type) && strtolower($type) == strtolower($array["sqlite"])){
 				/* SQLite */
 				$this->dbType = $array["sqlite"];
@@ -37,13 +48,13 @@
 					$command = "mysql:host=" . $host . ";port=" . $port . ";dbname=" . $name . ";charset=UTF8;";
 					$this->db = new PDO($command, $user, $pass);
 					
-					if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+					if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }	//If the variable $DEBUG equals true, print the command
 				} catch(PDOException $e){
 					error_log($this->dbType . ' connect error: ' . $e->getMessage());
 					die();
 				}
 			} else {
-				/* En cas d'erreur, précise les types disponibles */
+				/* On error, say the different possible types in the error_log file */
 				$error_text = "BDD error: You have to choose a bdd type between ";
 				
 				foreach($array as $key => $val){
@@ -55,7 +66,7 @@
 			}
 		}
 		
-		/* Vérification et protection des données */
+		/* Datas verification and protection */
 		private function secureValues($val){
 			$val = explode("'", $val);
 			$val = implode("\"", $val);
@@ -63,10 +74,12 @@
 			return $val;
 		}
 		
-		/* Utilisation de la fonction SELECT */
+		/* Use the SELECT */
 		public function select($name, $selection, $opt=""){
 			try {
 				$command = "SELECT $selection FROM $name $opt";
+				
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }	//If the variable $DEBUG equals true, print the command
 				
 				if(!($this->req = $this->db->query($command))){
 					return "";
@@ -74,8 +87,6 @@
 					$datas = $this->req->fetchAll(PDO::FETCH_ASSOC);
 					$this->req->closeCursor();
 				}
-				
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
 			
 				if($datas === false){
 					return "";
@@ -88,7 +99,7 @@
 			}
 		}
 		
-		/* Utilisation de la fonction SELECT et conversion de la réponse JSON */
+		/* Use the SELECT and convert the answer in JSON format */
 		public function selectJson($name, $selection, $opt=""){
 			try {
 				$data = $this->select($name, $selection, $opt);
@@ -104,13 +115,13 @@
 			}
 		}
 		
-		/* Utilisation de la fonction INSERT */
+		/* Use the INSERT */
 		public function insert($name, $val){
 			try {
 				$command = "INSERT INTO $name VALUES(" . $this->secureValues($val) . ")";
 				$this->db->exec($command);
 				
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }	//If the variable $DEBUG equals true, print the command
 				
 				return true;
 			} catch(PDOException $e){
@@ -119,33 +130,35 @@
 			}
 		}
 		
-		/* Utilisation de la fonction UPDATE */
+		/* Use the UPDATE */
 		public function update($name, $val, $opts=""){
-			$vals = explode(", ", $val);
-				for($i = 0; $i < sizeOf($vals); ++$i){
-					if(strrpos($vals[$i], " = ") !== false){
-						$valss = explode(" = ", $vals[$i]);
+			/* Put the datas in $val in the right shape */
+				$vals = explode(", ", $val);
+					for($i = 0; $i < sizeOf($vals); ++$i){
+						if(strrpos($vals[$i], " = ") !== false){
+							$valss = explode(" = ", $vals[$i]);
 						
-						$valss[0] = "`" . $valss[0] . "`";
-						$valss[1] = $this->secureValues($valss[1]);
+							$valss[0] = "`" . $valss[0] . "`";
+							$valss[1] = $this->secureValues($valss[1]);
 						
-						$vals[$i] = implode(" = ", $valss);
-					} else {
-						$valss = explode("=", $vals[$i]);
+							$vals[$i] = implode(" = ", $valss);
+						} else {
+							$valss = explode("=", $vals[$i]);
 						
-						$valss[0] = "`" . $valss[0] . "`";
-						$valss[1] = $this->secureValues($valss[1]);
+							$valss[0] = "`" . $valss[0] . "`";
+							$valss[1] = $this->secureValues($valss[1]);
 						
-						$vals[$i] = implode(" = ", $valss);
+							$vals[$i] = implode(" = ", $valss);
+						}
 					}
-				}
-			$val = implode(", ", $vals);
+				$val = implode(", ", $vals);
+			/********************************************/
 		
 			try {
 				$command = "UPDATE $name SET $val $opts";
 				$this->db->exec($command);
 				
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }	//If the variable $DEBUG equals true, print the command
 				
 				return true;
 			} catch(PDOException $e){
@@ -154,13 +167,13 @@
 			}
 		}
 		
-		/* Utilisation de la fonction DELETE */
+		/* Use the DELETE */
 		public function delete($name, $where){
 			try {
 				$command = "DELETE FROM $name WHERE $where";
 				$this->db->exec($command);
 				
-				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }
+				if(isset($GLOBALS["DEBUG"]) && $GLOBALS["DEBUG"] == true){ echo $command . "<br />\n"; }	//If the variable $DEBUG equals true, print the command
 				
 				return true;
 			} catch(PDOException $e){
@@ -169,7 +182,7 @@
 			}
 		}
 		
-		/* Récupération du dernier identifiant générer */
+		/* Recovery of the last autogenerated index */
 		public function getId(){
 			try {
 				return $this->db->lastInsertId();
