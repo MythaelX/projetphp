@@ -92,7 +92,7 @@
 		?>
 <?php require_once("php/paramForm.inc"); ?>
 <script>
-	var complete = true;
+	complete = true;
 	var libelle = '<?php echo $rep["libelle"]; ?>';
 	var corde = <?php echo $rep["corde"]; ?>;
 	var tmax = <?php echo $rep["tmax"]; ?>;

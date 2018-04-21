@@ -234,6 +234,18 @@ function createStruct(fields) {
 	return constructor;
 }
 
+/* Function to know if a variable exist */
+function isset(){
+	var a = arguments;
+	var l = a.length;
+	
+	for(var i = 0; i < l; ++i){
+		if(typeof a[i] === "undefined" || a[i] === null){ return false; }
+	}
+	
+	return true;
+}
+
 /* Functions that will be launched at the window onload event */
 	var onloadFunctions = new Array;
 	var onloadLine = createStruct("f args");

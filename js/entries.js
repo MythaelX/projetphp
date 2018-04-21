@@ -1,3 +1,5 @@
+var complete;
+
 function showEntry(id){
 	ajaxRequest("POST", "./php/request.php/show", function(val){}, "id_param="+id, false);
 	
@@ -21,6 +23,7 @@ function unsetSession(){
 }
 
 function completeForm(){
+	if(!isset(complete)){ return; }
 	if(complete != true){ return; }
 	
 	$("#libelle").val(libelle);
