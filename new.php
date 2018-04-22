@@ -31,16 +31,12 @@
 	$head->head_script("https://code.jquery.com/jquery-3.3.1.slim.min.js");
 	$head->head_script("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js");
 	$head->head_script("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js");
-
 	$head->show();
 ?>
 	<body id="body">
 		<header><?php require_once("php/header.temp.inc"); ?></header>
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><?php require_once("php/nav.temp.inc"); ?></nav>
-		<main>
-			<section><?php require_once("php/paramForm.inc"); ?></section>
-			<aside></aside>
-		</main>
-		<footer><?php require_once("php/footer.temp.inc"); ?></footer>
+		<main class="container"><section><?php require_once("php/paramForm.inc"); ?></section>	</main>
+		<footer class="container-fluid"><?php require_once("php/footer.temp.inc"); ?></footer>
 	</body>
 </html>

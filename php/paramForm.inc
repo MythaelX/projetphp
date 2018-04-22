@@ -1,28 +1,28 @@
 <!-- Formulaire commun à la page d'édition et de création -->
-<div class="bg-dark text-white container">
+<div class="bg-dark text-white container" id="form">
 <h1>Formulaire</h1>
-<form method="post" target="_self" class="container " action="php/database.php">
+<form method="post" target="_self" class="container" action="php/database.php">
 	<div class="form-group">
-		<label for="libelle">Intitulé :</label><br />
+		<label for="libelle">Intitulé :</label>
 		<input type="text" class="form-control" name="libelle" id="libelle" />
 	</div>
 	<div class="form-group">
-		<label for="corde">Taille de la corde (en mm):</label><br />
+		<label for="corde">Taille de la corde (en mm):</label>
 		<input type="number" min=0 step=0.1 class="form-control" name="corde" id="corde" />
 	</div>
 	<div class="form-group">
-		<div class="form-group" style="display: inline-block; width: 50%;">
-			<label for="tmax">Tmax (en %) :</label><br />
+		<div class="form-group" >
+			<label for="tmax">Tmax (en %) :</label>
 			<input type="number" min=0 max=100 step=0.1 class="form-control" name="tmax" id="tmax" />
 		</div>
-		<div class="form-group" style="display: inline-block; width: 45%;">
-			<label for="fmax">Fmax (en %) :</label><br />
+		<div class="form-group">
+			<label for="fmax">Fmax (en %) :</label>
 			<input type="number" min=0 max=100 step=0.1 class="form-control" name="fmax" id="fmax" />
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="form-group" style="display: inline-block; width: 50%;">
-			<label for="nb_points">Nombre de points pour les calculs :</label><br />
+		<div class="form-group">
+			<label for="nb_points">Nombre de points pour les calculs :</label>
 			<input type="number" min=0 step=1 class="form-control" name="nb_points" id="nb_points" />
 		</div>
 	</div>
