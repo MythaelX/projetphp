@@ -68,7 +68,7 @@
 		</tr>
 		<tr>
 			<th scope="row">Fmax</th>
-			<td><?php echo $vals["fmaxmm"]; ?> mm (<?php echo $vals["tmax"]; ?>%)</td>
+			<td><?php echo $vals["fmaxmm"]; ?> mm (<?php echo $vals["fmax"]; ?>%)</td>
 		</tr>
 		<tr>
 			<th scope="row">Nombre de points</th>
