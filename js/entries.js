@@ -13,6 +13,11 @@ function editEntry(id){
 }
 
 function deleteEntry(id){
+	var r = window.confirm("Êtes-vous sûr de vouloir supprimer ce Paramètre ?");
+	if(r == false){
+		return;
+	}
+	
 	ajaxRequest("POST", "./php/request.php/delete", function(val){}, "id_param="+id, false);
 	
 	location.reload();
