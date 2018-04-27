@@ -1,4 +1,5 @@
 <!-- Formulaire commun à la page d'édition et de création -->
+<section>
 <div class="bg-dark text-white container" id="form">
 <h1>Formulaire</h1>
 <form method="post" target="_self" class="container" action="php/database.php">
@@ -49,3 +50,4 @@
 	<input type="submit" class="btn btn-success" value="Envoyer" />
 </form>
 </div>
+</section>
