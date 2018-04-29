@@ -4,7 +4,7 @@
 /*																*/
 /*			File : _functions.php								*/
 /*				Created by Mathias CABIOCH-DELALANDE			*/
-/*					Last modification : 21/04/2018				*/
+/*					Last modification : 29/04/2018				*/
 /*																*/
 /*				Authorization : use only						*/
 /*																*/
@@ -36,5 +36,46 @@
 			
 			return $out;
 		}
+	}
+	
+	/* Function that return all the content of a folder */
+	function get_all_in($folder){
+		$index = 0;
+		
+		$dir = opendir($folder);
+		while(($file = readdir($dir)) !== false){
+			$files[$index++] = $file;
+		}
+		closedir($dir);
+		
+		return $files;
+	}
+	
+	/* Function that return all the files of a folder */
+	function get_all_files_in($folder){
+		$index = 0;
+		$temp = get_all_in($folder);
+		
+		for($i = 0; $i < sizeOf($temp); ++$i){
+			if(!is_dir($folder . $temp[$i])){
+				$files[$index++] = $temp[$i];
+			}
+		}
+		
+		return $files;
+	}
+	
+	/* Function that return all the folders of a folder */
+	function get_all_folders_in($folder){
+		$index = 0;
+		$temp = get_all_in($folder);
+		
+		for($i = 0; $i < sizeOf($temp); ++$i){
+			if(is_dir($folder . $temp[$i])){
+				$files[$index++] = $temp[$i];
+			}
+		}
+		
+		return $files;
 	}
 ?>
