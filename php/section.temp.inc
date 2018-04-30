@@ -75,8 +75,12 @@
 			<td><?php echo $vals["nb_points"]; ?> points</td>
 		</tr>
 		<tr>
-			<th scope="row">Image du graphique</th>
-			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>" /></a></td>
+			<th scope="row">Graphique de cambrure</th>
+			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>_cambrure.jpg"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>_cambrure.jpg" /></a></td>
+		</tr>
+		<tr>
+			<th scope="row">Graphique de solidité/rigidité</th>
+			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>_soliditie.jpg"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>_solidite.jpg" /></a></td>
 		</tr>
 		<tr>
 			<th scope="row">Fichier CSV</th>
@@ -101,4 +105,6 @@
 	var inter = <?php echo "0"; ?>;
 </script>
 		<?php
+		$_SESSION["show"] = $_SESSION["edit"];
+		unset($_SESSION["edit"]);
 	}
