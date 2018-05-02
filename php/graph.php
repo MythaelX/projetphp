@@ -62,8 +62,10 @@ function createGraph($id){
 
 	$cambrure->setX($x["pos"], $x["val"]);
 
-	$cambrure->saveJpg("../design/img/" . $imgfile . "_cambrure.jpg");
+	$cambrure->saveJpg("../design/img/" . $imgfile . ".jpg");
 
+	/* Non fait car demandé de l'ignorer */
+	/*
 	//Solidity graph
 	$solidity = new Graphique(1200, 780);
 
@@ -75,6 +77,8 @@ function createGraph($id){
 	$solidity->setX($fmax["pos"], $fmax["val"]);
 
 	$solidity->saveJpg("../design/img/" . $imgfile . "_solidite.jpg");
+	*/
+	/*************************************/
 
 	// Return the graph name
 	return $imgfile;

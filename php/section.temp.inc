@@ -76,11 +76,7 @@
 		</tr>
 		<tr>
 			<th scope="row">Graphique de cambrure</th>
-			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>_cambrure.jpg"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>_cambrure.jpg" /></a></td>
-		</tr>
-		<tr>
-			<th scope="row">Graphique de solidité/rigidité</th>
-			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>_soliditie.jpg"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>_solidite.jpg" /></a></td>
+			<td><a href="./design/img/<?php echo $vals["fic_img"]; ?>_cambrure.jpg"><img id="graphic" src="./design/img/<?php echo $vals["fic_img"]; ?>.jpg" /></a></td>
 		</tr>
 		<tr>
 			<th scope="row">Fichier CSV</th>
