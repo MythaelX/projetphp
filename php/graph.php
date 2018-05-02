@@ -18,7 +18,7 @@ function createGraph($id){
 		$solidite[$i] = $igz[$i]/$vmax;
 	}
 
-	/* X values for X axis of the first graph */
+	/* Valeurs de x pour le premier graphique */
 		$j = 0;
 		$i = 0;
 		$add = 10;
@@ -40,18 +40,19 @@ function createGraph($id){
 			$x["pos"][$i] = floatval(sizeOf($datas)-1);
 		}
 	/******************************************/
-	/* X values for X axis of the second graph */
+	/* Valeurs de x pour le second graphique */
+		/*
 		for($i = 0;$i<$datasP[0]["fmax"]+2;++$i){
 			$fmax["pos"][$i] =$i*2;
 			$fmax["val"][$i] =$i*2;
 		}
-
+		*/
 	/*******************************************/
 
-	// Create the filename
+	// Créer le nom du fichier
 	$imgfile = $datasP[0]["libelle"] . "_" . uniqid("", true);
 
-	// Cambrure graph
+	// Graphique de cambrure
 	$cambrure = new Graphique(1200, 780);
 
 	$cambrure->setTitle($datasP[0]["libelle"]);
@@ -66,7 +67,7 @@ function createGraph($id){
 
 	/* Non fait car demandé de l'ignorer */
 	/*
-	//Solidity graph
+	// Graphique de solidité
 	$solidity = new Graphique(1200, 780);
 
 	$solidity->setTitle($datasP[0]["libelle"]);
@@ -80,7 +81,7 @@ function createGraph($id){
 	*/
 	/*************************************/
 
-	// Return the graph name
+	// Renvoie le nom du graphique
 	return $imgfile;
 }
 ?>

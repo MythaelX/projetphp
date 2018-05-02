@@ -9,7 +9,7 @@ class Graphique {
 		require_once('../jpgraph/jpgraph.php');
 		require_once('../jpgraph/jpgraph_line.php');
 
-		// Create the graph. These two calls are always required
+		// Créer le graphique
 		$this->graph = new Graph(1200, 780);
 		$this->graph->cleartheme();
 		$this->graph->SetScale("linlin");
@@ -28,7 +28,6 @@ class Graphique {
 	}
 
 	public function setX($ticks, $labels){
-
 		$this->graph->xaxis->title->Set("X");
 		$this->graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 		$this->graph->xaxis->SetPos('min');
@@ -54,26 +53,26 @@ class Graphique {
 			$xmax += $margin;
 		}
 
-		//Initializing of the graph
+		//Initialisation des graphiques
 		$this->graph->SetScale("linlin", 0, 0, $xmin, $xmax);
 		$this->graph->SetShadow();
 		$this->graph->img->SetMargin(40, 30, 20, 40);
 
-		// Create the lines
+		//Création des lignes
 		for($i = 0; $i < sizeOf($this->y); ++$i){
 			$lines[$i] = new LinePlot($this->y[$i]);
 		}
 
-		// ...and add it to the graph
+		//et ajout au graphique
 		for($i = 0; $i < sizeOf($lines); ++$i){
 			$this->graph->add($lines[$i]);
 		}
 
-		//Set y-axis properties
+		//Propriétés de l'axe Y
 		$this->graph->yaxis->title->Set("Y");
 		$this->graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
 
-		// Set the img format
+		//Initialise le format d'image
 		$this->graph->SetImgFormat("jpeg", 90);
 		$this->graph->Stroke($filename);
 	}
